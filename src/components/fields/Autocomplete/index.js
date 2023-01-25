@@ -39,7 +39,7 @@ export default class AutocompleteField extends React.Component {
 
   @autobind
   onKeyDown (event) {
-    const index = this.refs.input.state.highlightedIndex
+    const index = this.input.state.highlightedIndex
     if (event.keyCode === 9 && index !== null) {
       this.props.onChange(this.state.items[index])
     }
@@ -67,7 +67,7 @@ export default class AutocompleteField extends React.Component {
       <div>
         <div style={styles.container}>
           <Autocomplete
-            ref='input'
+            ref={(ref) => {this.input = ref}}
             selectOnTab
             inputProps={{ onKeyDown: this.onKeyDown, style: styles.input, placeholder: this.props.placeholder, onFocus: () => this.fetch('') }}
             menuStyle={styles.menu}

@@ -86,7 +86,6 @@ export default class NComponent extends React.Component {
         <div className="os-input-container">
           <input
             className="os-input-text"
-            ref="input"
             value={this.getValue()}
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}

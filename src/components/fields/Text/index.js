@@ -22,7 +22,6 @@ export default class Text extends React.Component {
       <div>
         <div className="os-input-container">
           <input
-            ref="input"
             className="os-input-text"
             type={this.props.fieldType}
             value={this.props.value}

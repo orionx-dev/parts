@@ -102,12 +102,10 @@ class CircularProgress extends Component {
   }
 
   componentDidMount() {
-    // this.scalePath(this.refs.path)
-    this.rotateWrapper(this.refs.wrapper)
+    this.rotateWrapper(this.wrapper)
   }
 
   componentWillUnmount() {
-    // clearTimeout(this.scalePathTimer)
     clearTimeout(this.rotateWrapperTimer)
   }
 
@@ -161,10 +159,10 @@ class CircularProgress extends Component {
 
     return (
       <div {...other} style={Object.assign(styles.root, style)}>
-        <div ref="wrapper" style={Object.assign(styles.wrapper, innerStyle)}>
+        <div ref={(ref) => {this.wrapper = ref}} style={Object.assign(styles.wrapper, innerStyle)}>
           <svg viewBox={`0 0 ${size} ${size}`} style={styles.svg}>
             <circle
-              ref="path"
+              ref={ref=>{this.path = ref}}
               style={styles.path}
               cx={size / 2}
               cy={size / 2}

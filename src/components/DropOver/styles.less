@@ -13,14 +13,14 @@
 }
 
 .os_dropover-enter,
-.os_dropover-leave.os_dropover-leave-active {
+.os_dropover-exit.os_dropover-exit-active {
   opacity: 0;
   transform: rotateX(-15deg);
   transform-origin: 50% -50px;
 }
 
 .os_dropover-enter.os_dropover-enter-active,
-.os_dropover-leave {
+.os_dropover-exit {
   opacity: 1;
   transform: rotateX(0deg);
   transition: all 300ms ease;

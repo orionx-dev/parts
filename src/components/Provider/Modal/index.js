@@ -58,12 +58,12 @@ export default class Modal extends React.Component {
       loading: false,
       open: true
     })
-    this.refs.modal.show()
+    this.modal.show()
   }
 
   @autobind
   hideModal() {
-    this.refs.modal.hide()
+    this.modal.hide()
     this.setState({open: false})
   }
 
@@ -80,7 +80,7 @@ export default class Modal extends React.Component {
     return (
       <div>
         {this.props.children}
-        <OutlineModal ref="modal" keyboard modalStyle={styles.modal} contentStyle={styles.content}>
+        <OutlineModal ref={(ref) => {this.modal = ref}} keyboard modalStyle={styles.modal} contentStyle={styles.content}>
           <div style={styles.title}>{this.state.title}</div>
           <div style={styles.message}>
             {this.state.render ? this.state.render() : this.state.message}

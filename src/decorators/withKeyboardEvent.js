@@ -64,8 +64,8 @@ export default function (keys, functionName) {
 
       getChild (from) {
         from = from || this
-        if (!from.refs.keyboardEventChild) return from
-        return this.getChild(from.refs.keyboardEventChild)
+        if (!from.keyboardEventChild) return from
+        return this.getChild(from.keyboardEventChild)
       }
 
       checkKeys (event) {
@@ -89,7 +89,7 @@ export default function (keys, functionName) {
       }
 
       render () {
-        return <Child ref='keyboardEventChild' {...this.props} />
+        return <Child ref={(ref)=>{this.keyboardEventChild = ref}} {...this.props} />
       }
 
     }

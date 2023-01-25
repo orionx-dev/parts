@@ -1,5 +1,5 @@
 import React from 'react'
-import withMutation from 'react-apollo-decorators/lib/withMutation'
+import withMutation from '@orionx-dev/react-apollo-decorators/lib/withMutation'
 import gql from 'graphql-tag'
 import autobind from 'autobind-decorator'
 import hashPassword from '../helpers/hashPassword'

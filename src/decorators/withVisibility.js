@@ -13,7 +13,7 @@ export default function({offset, once} = {offset: 0, once: false}) {
       state = {}
 
       isVisible() {
-        const element = this.refs.main
+        const element = this.main
         const rect = element.getBoundingClientRect()
         const {top, height} = rect
 
@@ -46,7 +46,7 @@ export default function({offset, once} = {offset: 0, once: false}) {
 
       render() {
         return (
-          <div ref="main">
+          <div ref={(ref)=>{this.main = ref}}>
             <ComposedComponent visible={this.state.visible} {...this.props} {...this.state} />
           </div>
         )

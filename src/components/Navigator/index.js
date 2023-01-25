@@ -22,23 +22,23 @@ export default class Navigator extends React.Component {
   state = {}
 
   async componentDidMount() {
-    this.refs.inner.addEventListener('scroll', this.checkScroll)
+    this.inner.addEventListener('scroll', this.checkScroll)
     window.addEventListener('resize', this.checkScroll)
     this.checkScroll()
     await sleep(200)
-    if (this.refs.inner) {
+    if (this.inner) {
       this.checkScroll()
     }
   }
 
   componentWillUnmount() {
-    this.refs.inner.removeEventListener('scroll', this.checkScroll)
+    this.inner.removeEventListener('scroll', this.checkScroll)
     window.removeEventListener('resize', this.checkScroll)
   }
 
   @autobind
   checkScroll() {
-    const element = this.refs.inner
+    const element = this.inner
     const width = element.offsetWidth
     const innerWidth = element.scrollWidth
     const scrollLeft = element.scrollLeft
@@ -79,7 +79,7 @@ export default class Navigator extends React.Component {
       classNames.push('os-navigator-inner-small')
     }
     return (
-      <div className={classNames.join(' ')} ref="inner">
+      <div className={classNames.join(' ')} ref={(ref) => {this.inner = ref}}>
         {items}
       </div>
     )
@@ -89,7 +89,7 @@ export default class Navigator extends React.Component {
     if (!this.state.showShadows) return
     const {red, green, blue} = parseColor(this.props.color)
     const color = [red, green, blue].join(', ')
-    const element = this.refs.inner
+    const element = this.inner
     const top = element.getBoundingClientRect().top + window.scrollY
     const left = element.getBoundingClientRect().left + window.scrollX
     const right = element.getBoundingClientRect().right - window.scrollX
@@ -109,7 +109,7 @@ export default class Navigator extends React.Component {
   }
 
   renderRightIcon() {
-    const element = this.refs.inner
+    const element = this.inner
     if (!element) return
     const top = element.getBoundingClientRect().top + window.scrollY
     const right = element.getBoundingClientRect().right - window.scrollX
@@ -123,7 +123,7 @@ export default class Navigator extends React.Component {
   }
 
   renderLeftIcon() {
-    const element = this.refs.inner
+    const element = this.inner
     if (!element) return
     const top = element.getBoundingClientRect().top + window.scrollY
     const left = element.getBoundingClientRect().left + window.scrollX

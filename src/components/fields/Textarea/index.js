@@ -24,7 +24,7 @@ export default class Textarea extends React.Component {
   @autobind
   autoResize (event) {
     if (!this.props.autoResize) return
-    const {height} = getHeight(this.refs.input)
+    const {height} = getHeight(this.input)
     if (this.state.height !== height) {
       this.setState({height})
     }
@@ -41,7 +41,6 @@ export default class Textarea extends React.Component {
       <div>
         <div className='os-input-container'>
           <textarea
-            ref='input'
             className='os-input-text'
             rows={1}
             style={{height: this.state.height}}

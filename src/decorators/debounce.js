@@ -34,7 +34,7 @@ export default function (debounceTime) {
       }
 
       render () {
-        return <Child ref='child' debouncing={this.state.debouncing} {...this.state.props} />
+        return <Child ref={ref=>{this.child = ref}} debouncing={this.state.debouncing} {...this.state.props} />
       }
 
     }

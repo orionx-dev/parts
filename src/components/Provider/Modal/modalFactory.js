@@ -108,15 +108,15 @@ module.exports = function(animation) {
       )
 
       if (willHidden) {
-        var node = this.refs[ref]
+        var node = this[ref]
         this.addTransitionListener(node, this.leave)
       }
 
       return (
         <span>
-          <div ref="modal" style={modalStyle} className={this.props.className}>
+          <div ref={ref=>{this.modal = ref}} style={modalStyle} className={this.props.className}>
             {sharp}
-            <div ref="content" tabIndex="-1" style={contentStyle}>
+            <div ref={ref=>{this.content = ref}} tabIndex="-1" style={contentStyle}>
               {this.props.children}
             </div>
           </div>
@@ -150,7 +150,7 @@ module.exports = function(animation) {
       setTimeout(
         function() {
           var ref = this.props.animation.getRef()
-          var node = this.refs[ref]
+          var node = this[ref]
           this.addTransitionListener(node, this.enter)
         }.bind(this),
         0

@@ -26,7 +26,7 @@ export default class WithMessage extends React.Component {
       level: 'info',
       ...passedOptions
     }
-    this.refs.notificationSystem.addNotification(options)
+    this.notificationSystem.addNotification(options)
   }
 
   getStyle () {
@@ -65,7 +65,7 @@ export default class WithMessage extends React.Component {
     return (
       <div>
         {this.props.children}
-        <NotificationSystem ref='notificationSystem' style={this.getStyle()} />
+        <NotificationSystem ref={(ref)=>{this.notificationSystem = ref}} style={this.getStyle()} />
       </div>
     )
   }
