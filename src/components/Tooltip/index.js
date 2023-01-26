@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactTooltip from 'react-tooltip'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 import isString from 'lodash/isString'
 import autobind from 'autobind-decorator'
 import uniqueId from 'lodash/uniqueId'
@@ -28,7 +29,7 @@ export default class Tooltip extends React.Component {
         <div data-tip='' data-for={id}>
           {this.props.children}
         </div>
-        <ReactTooltip id={id} place={this.props.place} effect='solid' getContent={this.getContent} />
+        <ReactTooltip id={id} place={this.props.place} content={this.getContent} />
       </div>
     )
   }
