@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import {withRouter, Link} from 'react-router'
 import autobind from 'autobind-decorator'
 import sleep from '../../helpers/sleep'
-import RightIcon from 'react-icons/lib/md/chevron-right'
-import LeftIcon from 'react-icons/lib/md/chevron-left'
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import parseColor from '../../helpers/parseColor'
 
 @withRouter
@@ -84,7 +83,7 @@ export default class Tabs extends React.Component {
       classNames.push('os-tabs-inner-small')
     }
     return (
-      <div className={classNames.join(' ')} ref={(ref)=>{this.inner = ref}}>
+      <div className={classNames.join(' ')} ref={(ref) => { this.inner = ref }}>
         {items}
       </div>
     )
@@ -113,7 +112,7 @@ export default class Tabs extends React.Component {
     ]
   }
 
-  renderRightIcon() {
+  renderMdChevronRight() {
     const element = this.inner
     if (!element) return
     const top = element.getBoundingClientRect().top + window.scrollY
@@ -122,12 +121,12 @@ export default class Tabs extends React.Component {
       <div
         className="os-tabs-icon"
         style={{opacity: this.state.showArrowRight ? 1 : 0, top, left: right - 30}}>
-        <RightIcon size={30} />
+        <MdChevronRight size={30} />
       </div>
     )
   }
 
-  renderLeftIcon() {
+  renderMdChevronLeft() {
     const element = this.inner
     if (!element) return
     const top = element.getBoundingClientRect().top + window.scrollY
@@ -136,7 +135,7 @@ export default class Tabs extends React.Component {
       <div
         className="os-tabs-icon"
         style={{opacity: this.state.showArrowLeft ? 1 : 0, top, left: left}}>
-        <LeftIcon size={30} />
+        <MdChevronLeft size={30} />
       </div>
     )
   }
@@ -146,8 +145,8 @@ export default class Tabs extends React.Component {
       <div className="os-tabs-container">
         {this.renderItems()}
         {this.renderShadow()}
-        {this.renderLeftIcon()}
-        {this.renderRightIcon()}
+        {this.renderMdChevronLeft()}
+        {this.renderMdChevronRight()}
       </div>
     )
   }

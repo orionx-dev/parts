@@ -2,7 +2,7 @@ import React from 'react'
 import {ArrayComponent} from 'simple-react-form'
 import Button from '../../Button'
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
-import RemoveIcon from 'react-icons/lib/md/cancel'
+import { MdCancel } from 'react-icons/md'
 import without from 'lodash/without'
 import PropTypes from 'prop-types'
 
@@ -55,7 +55,7 @@ export default class Array extends ArrayComponent {
         </div>
         <div className='os-array-item-remove'>
           <Button danger onClick={() => this.removeItem(index)}>
-            <RemoveIcon />
+            <MdCancel />
           </Button>
         </div>
       </div>

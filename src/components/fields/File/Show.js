@@ -1,6 +1,5 @@
 import React from 'react'
-import DeleteIcon from 'react-icons/lib/md/delete'
-import ViewIcon from 'react-icons/lib/md/open-in-browser'
+import { MdDelete, MdOpenInBrowser } from 'react-icons/md'
 import autobind from 'autobind-decorator'
 import cleanFileURL from './cleanFileURL'
 import PropTypes from 'prop-types'
@@ -54,8 +53,8 @@ export default class Show extends React.Component {
           {cleanFileURL(this.props.value.url)}
         </div>
         <div style={styles.buttons}>
-          <ViewIcon style={styles.icon} size={25} onClick={this.open} />
-          <DeleteIcon style={styles.icon} size={25} onClick={this.delete} />
+          <MdOpenInBrowser style={styles.icon} size={25} onClick={this.open} />
+          <MdDelete style={styles.icon} size={25} onClick={this.delete} />
         </div>
       </div>
     )
