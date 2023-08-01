@@ -1,5 +1,6 @@
 import React from 'react'
-import NotificationSystem from 'react-notification-system'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import autobind from 'autobind-decorator'
 import PropTypes from 'prop-types'
 
@@ -26,46 +27,25 @@ export default class WithMessage extends React.Component {
       level: 'info',
       ...passedOptions
     }
-    this.notificationSystem.addNotification(options)
-  }
-
-  getStyle () {
-    return {
-      NotificationItem: {
-        DefaultStyle: {
-          margin: '10px 5px 2px 1px',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          color: '#fff',
-          borderTop: 'none',
-          boxShadow: 'none'
-        },
-        error: {
-          backgroundColor: '#be0606'
-        }
-      },
-      Dismiss: {
-        DefaultStyle: {
-          display: 'none'
-        }
-      },
-      Action: {
-        DefaultStyle: {
-          outline: 'none',
-          cursor: 'pointer'
-        },
-        info: {
-          backgroundColor: '#fff',
-          color: '#000'
-        }
-      }
-    }
+    toast.info(options.message)
   }
 
   render () {
     return (
       <div>
         {this.props.children}
-        <NotificationSystem ref={(ref)=>{this.notificationSystem = ref}} style={this.getStyle()} />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </div>
     )
   }
