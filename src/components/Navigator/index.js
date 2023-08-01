@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {withRouter, Link} from 'react-router'
+import {Link} from 'react-router-dom'
+import withRouter from '../../helpers/withRouter'
 import autobind from 'autobind-decorator'
 import sleep from '../../helpers/sleep'
 import { MdChevronRight, MdChevronLeft } from 'react-icons/md'
