@@ -1,37 +1,30 @@
 import React from 'react'
-import { Tooltip as ReactTooltip } from 'react-tooltip'
-import 'react-tooltip/dist/react-tooltip.css'
-import isString from 'lodash/isString'
-import autobind from 'autobind-decorator'
-import uniqueId from 'lodash/uniqueId'
 import PropTypes from 'prop-types'
+import {Tooltip as ReactTooltip} from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
-export default class Tooltip extends React.Component {
-
-  static propTypes = {
+export default function Tooltip(props) {
+  const propTypes = {
     children: PropTypes.node,
-    content: PropTypes.node,
+    content: PropTypes.string,
     place: PropTypes.string
   }
 
-  @autobind
-  getContent () {
-    if (isString(this.props.content)) {
-      return this.props.content.split('\n').map((line, index) => <div key={index}>{line}</div>)
-    }
-    return this.props.content
-  }
+  const id = randomString(12)
 
-  render () {
-    const id = uniqueId('os-tooltip')
-    return (
-      <div style={{display: 'inline-block'}}>
-        <div data-tip='' data-for={id}>
-          {this.props.children}
-        </div>
-        <ReactTooltip id={id} place={this.props.place} content={this.getContent} />
-      </div>
-    )
-  }
+  return (
+    <div style={{display: 'inline-block'}}>
+      <a className={`${id}`}>{props.children}</a>
+      <ReactTooltip anchorSelect={`.${id}`} content={props.content} place={props.place} />
+    </div>
+  )
+}
 
+function randomString(chars) {
+  var text = ''
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
+  for (var i = 0; i < chars; i++) { text += possible.charAt(Math.floor(Math.random() * possible.length)) }
+
+  return text
 }
