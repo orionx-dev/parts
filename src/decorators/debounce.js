@@ -22,7 +22,7 @@ export default function (debounceTime) {
         })
       }
 
-      componentWillReceiveProps (nextProps) {
+      UNSAFE_componentWillReceiveProps (nextProps) {
         this.setState({debouncing: true})
         this.deboucedDidRecieveProps(nextProps)
       }

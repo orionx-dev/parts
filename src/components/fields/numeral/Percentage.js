@@ -35,7 +35,7 @@ export default class PercentageComponent extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
       this.setState({
         value: this.formatValue(nextProps.value)

@@ -1,26 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { MeContext } from '../helpers/contexts/meContext'
 
 export default function (ComposedComponent) {
-  return class WithRoles extends React.Component {
+  return function WithRoles(props) {
+    const me = useContext(MeContext)
+    const navigate = useNavigate()
 
-    static contextTypes = {
-      me: PropTypes.object,
-      router: PropTypes.object
-    }
-
-    redirect () {
-      this.context.router.replace({
-        pathname: '/login',
+    function redirect() {
+      navigate('/login', {
         state: { nextPathname: window.location.pathname }
       })
       return <span />
     }
 
-    render () {
-      const me = this.context.me
-      if (!me) return this.redirect()
-      return <ComposedComponent {...this.props} />
-    }
+    if (!me) return redirect()
+    return <ComposedComponent {...props} />
   }
 }
